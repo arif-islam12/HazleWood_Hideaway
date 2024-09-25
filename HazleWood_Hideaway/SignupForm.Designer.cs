@@ -76,7 +76,7 @@
             this.btnSingup.Name = "btnSingup";
             this.btnSingup.Size = new System.Drawing.Size(245, 36);
             this.btnSingup.TabIndex = 9;
-            this.btnSingup.Text = "Sing up";
+            this.btnSingup.Text = "Sign up";
             // 
             // txtPassword
             // 

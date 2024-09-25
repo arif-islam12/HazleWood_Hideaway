@@ -86,6 +86,7 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.BackColor = System.Drawing.Color.Transparent;
             this.btnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -141,7 +142,7 @@
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.Size = new System.Drawing.Size(43, 18);
             this.btnSignup.TabIndex = 6;
-            this.btnSignup.Text = "Sing up";
+            this.btnSignup.Text = "Sign up";
             this.btnSignup.Click += new System.EventHandler(this.btnSignup_Click);
             // 
             // btnExit
