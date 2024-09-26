@@ -28,23 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txtItemName = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCatagory = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtPrice = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnAddItem = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::HazleWood_Hideaway.Properties.Resources.AddItemsBG;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(788, 561);
-            this.guna2PictureBox1.TabIndex = 1;
-            this.guna2PictureBox1.TabStop = false;
             // 
             // txtItemName
             // 
@@ -132,6 +122,17 @@
             this.btnAddItem.Size = new System.Drawing.Size(206, 36);
             this.btnAddItem.TabIndex = 17;
             this.btnAddItem.Text = "Add Item";
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::HazleWood_Hideaway.Properties.Resources.AddItemsBG;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(788, 561);
+            this.guna2PictureBox1.TabIndex = 1;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // UC_AddItems
             // 
@@ -145,6 +146,7 @@
             this.Controls.Add(this.guna2PictureBox1);
             this.Name = "UC_AddItems";
             this.Size = new System.Drawing.Size(788, 561);
+            this.Leave += new System.EventHandler(this.UC_AddItems_Leave_1);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 

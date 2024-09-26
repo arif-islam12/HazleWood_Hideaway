@@ -39,8 +39,8 @@ namespace HazleWood_Hideaway
         {
             uC_AddItems1.Visible = false;
             uC_PlaceOrder1.Visible = false;
-           // uC_UpdateItems1.Visible = false;
-           // uC_RemoveItems1.Visible = false;
+            uC_UpdateItems1.Visible = false;
+            uC_RemoveItems1.Visible = false;
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -62,6 +62,18 @@ namespace HazleWood_Hideaway
         {
             uC_AddItems1.Visible = true;
             uC_AddItems1.BringToFront();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            uC_UpdateItems1.Visible = true;
+            uC_UpdateItems1.BringToFront();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            uC_RemoveItems1.Visible = true;
+            uC_RemoveItems1.BringToFront();
         }
     }
 }

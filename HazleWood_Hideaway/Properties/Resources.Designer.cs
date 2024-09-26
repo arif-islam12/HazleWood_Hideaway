@@ -143,6 +143,26 @@ namespace HazleWood_Hideaway.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap RemoveItemsBG {
+            get {
+                object obj = ResourceManager.GetObject("RemoveItemsBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UpdateItemsBG {
+            get {
+                object obj = ResourceManager.GetObject("UpdateItemsBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Welcome {
             get {
                 object obj = ResourceManager.GetObject("Welcome", resourceCulture);
