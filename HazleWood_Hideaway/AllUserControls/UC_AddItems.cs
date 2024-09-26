@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace HazleWood_Hideaway.AllUserControls
 {
-    public partial class UC_PlaceOrder : UserControl
+    public partial class UC_AddItems : UserControl
     {
-        public UC_PlaceOrder()
+        public UC_AddItems()
         {
             InitializeComponent();
         }
-
-       
     }
 }

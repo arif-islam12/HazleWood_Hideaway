@@ -22,7 +22,9 @@ namespace HazleWood_Hideaway
             Application.Exit();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+       
+
+        private void btnLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LoginForm loginForm = new LoginForm();
             loginForm.Show();

@@ -23,12 +23,7 @@ namespace HazleWood_Hideaway
             Application.Exit();
         }
 
-        private void btnSignup_Click(object sender, EventArgs e)
-        {
-            SignupForm signupForm = new SignupForm();
-            signupForm.Show();
-            this.Hide();
-        }
+
 
         private void btnGuest_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -45,6 +40,13 @@ namespace HazleWood_Hideaway
                 ds.Show();
                 this.Hide();
             }
+        }
+
+        private void btnSignup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SignupForm sf = new SignupForm();
+            sf.Show();
+            this.Hide();
         }
     }
 }

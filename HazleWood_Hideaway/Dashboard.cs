@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,8 +37,8 @@ namespace HazleWood_Hideaway
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            //uC_AddItems1.Visible = false;
-            //uC_PlaceOrder1.Visible = false;
+            uC_AddItems1.Visible = false;
+            uC_PlaceOrder1.Visible = false;
            // uC_UpdateItems1.Visible = false;
            // uC_RemoveItems1.Visible = false;
         }
@@ -47,6 +48,20 @@ namespace HazleWood_Hideaway
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
             this.Hide();
+        }
+
+        private void btnPlaceOrder_Click(object sender, EventArgs e)
+        {
+            uC_Welcome1.SendToBack();
+            guna2Transition1.ShowSync(uC_PlaceOrder1);
+            uC_PlaceOrder1.Visible = true;
+            uC_PlaceOrder1.BringToFront();
+        }
+
+        private void btnAddItems_Click(object sender, EventArgs e)
+        {
+            uC_AddItems1.Visible = true;
+            uC_AddItems1.BringToFront();
         }
     }
 }

@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllUserControls\UC_AddItems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AllUserControls\UC_AddItems.Designer.cs">
+      <DependentUpon>UC_AddItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="AllUserControls\UC_PlaceOrder.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     <Compile Include="SignupForm.Designer.cs">
       <DependentUpon>SignupForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AllUserControls\UC_AddItems.resx">
+      <DependentUpon>UC_AddItems.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AllUserControls\UC_PlaceOrder.resx">
       <DependentUpon>UC_PlaceOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,6 +114,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SignupForm.resx">
       <DependentUpon>SignupForm.cs</DependentUpon>
@@ -123,6 +133,32 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Welcome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlaceOrderBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlaceOrderBG1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddItemsBG.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
