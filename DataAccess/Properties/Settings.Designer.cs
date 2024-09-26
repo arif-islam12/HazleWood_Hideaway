@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LoginSignup.Properties
+namespace DataAccess.Properties
 {
 
 

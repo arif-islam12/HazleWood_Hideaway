@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace HazleWood_Hideaway
+{
+    public partial class Dashboard : Form
+    {
+        public Dashboard(String user)
+        {
+            InitializeComponent();
+            if (user == "Guest")
+            {
+                btnAddItems.Hide();
+                btnRemove.Hide();
+                btnUpdate.Hide();
+            }
+            else if (user == "Admin")
+            {
+                btnAddItems.Show();
+                btnRemove.Show();
+                btnUpdate.Show();
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            //uC_AddItems1.Visible = false;
+            //uC_PlaceOrder1.Visible = false;
+           // uC_UpdateItems1.Visible = false;
+           // uC_RemoveItems1.Visible = false;
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide();
+        }
+    }
+}

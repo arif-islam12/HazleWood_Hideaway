@@ -36,10 +36,12 @@
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnSignup = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnExit = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnGuest = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // txtUsername
             // 
+            this.txtUsername.Animated = true;
             this.txtUsername.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             this.txtUsername.BorderThickness = 0;
             this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -63,6 +65,7 @@
             // 
             // txtPassword
             // 
+            this.txtPassword.Animated = true;
             this.txtPassword.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             this.txtPassword.BorderThickness = 0;
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -78,7 +81,7 @@
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.Location = new System.Drawing.Point(41, 247);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '\0';
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.PlaceholderText = "Password";
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(200, 36);
@@ -99,6 +102,7 @@
             this.btnLogin.Size = new System.Drawing.Size(200, 36);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // guna2HtmlLabel1
             // 
@@ -163,12 +167,27 @@
             this.btnExit.Text = "x";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnGuest
+            // 
+            this.btnGuest.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(121)))), ((int)(((byte)(121)))));
+            this.btnGuest.AutoSize = true;
+            this.btnGuest.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuest.LinkColor = System.Drawing.Color.White;
+            this.btnGuest.Location = new System.Drawing.Point(83, 370);
+            this.btnGuest.Name = "btnGuest";
+            this.btnGuest.Size = new System.Drawing.Size(111, 16);
+            this.btnGuest.TabIndex = 8;
+            this.btnGuest.TabStop = true;
+            this.btnGuest.Text = "Continue as a Guest";
+            this.btnGuest.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnGuest_LinkClicked);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(284, 461);
+            this.Controls.Add(this.btnGuest);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSignup);
             this.Controls.Add(this.guna2HtmlLabel3);
@@ -196,6 +215,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel btnSignup;
         private Guna.UI2.WinForms.Guna2TileButton btnExit;
+        private System.Windows.Forms.LinkLabel btnGuest;
     }
 }
 
