@@ -9,9 +9,8 @@ using System.Windows.Forms;
 
 namespace DataAccess
 {
-    public class function
+    public class Database_2
     {
-
         protected SqlConnection GetConnection()
         {
             SqlConnection conn = new SqlConnection();

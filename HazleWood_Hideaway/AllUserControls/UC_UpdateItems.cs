@@ -16,5 +16,10 @@ namespace HazleWood_Hideaway.AllUserControls
         {
             InitializeComponent();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
