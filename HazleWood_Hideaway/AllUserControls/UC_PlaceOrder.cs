@@ -76,53 +76,7 @@ namespace HazleWood_Hideaway.AllUserControls
         protected int n, total = 0;
         int amount;
 
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-            // Check if anow is selected
-            if (guna2DataGridView1.Rows.Count == 0)
-            {
-                MessageBox.Show("No items to remove.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return; // Exit if there are no rows
-            }
-
-            // Check if any row is selected
-            if (guna2DataGridView1.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Please select an item to remove.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // Exit if no row is selected
-
-                return;
-
-            }
-
-            try
-            {
-                // If the total amount is greater than 0, proceed with removal
-                if (total > 0)
-                {
-                    total -= amount;
-                    labelTotalAmount.Text = "TK " + total;
-                }
-                else
-                {
-                    MessageBox.Show("Can't remove any more items, total is already zero.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                // Remove the selected row from the DataGridView
-                int selectedIndex = guna2DataGridView1.SelectedRows[0].Index;
-
-                // Ensure a valid row is selected and it's not the last row unless explicitly selected
-                if (selectedIndex >= 0)
-                {
-                    guna2DataGridView1.Rows.RemoveAt(selectedIndex);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while removing the item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
@@ -173,6 +127,19 @@ namespace HazleWood_Hideaway.AllUserControls
                     {
                         // Parse the amount from the selected cell
                         amount = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
+
+                        // Ask the user if they want to remove the selected item
+                        DialogResult result = MessageBox.Show("Do you want to remove this item?", "Confirm Removal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            // If "Yes", remove the selected item and update the total amount
+                            total -= amount;
+                            labelTotalAmount.Text = "TK " + total;
+
+                            // Remove the selected row from the DataGridView
+                            guna2DataGridView1.Rows.RemoveAt(e.RowIndex);
+                        }
                     }
                     else
                     {
