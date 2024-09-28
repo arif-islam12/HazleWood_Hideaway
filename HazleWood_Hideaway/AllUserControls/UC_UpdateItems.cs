@@ -52,15 +52,21 @@ namespace HazleWood_Hideaway.AllUserControls
         int id;
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-            String category = guna2DataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            String name = guna2DataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            int price = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
+            if (int.TryParse(guna2DataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(), out id))
+            {
+                String category = guna2DataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                String name = guna2DataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                int price = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
 
+                txtCategory.Text = category;
+                txtName.Text = name;
+                txtPrice.Text = price.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Invalid ID format.");
+            }
 
-            txtCategory.Text = category;
-            txtName.Text = name;
-            txtPrice.Text = price.ToString();
         }
     }
 }
