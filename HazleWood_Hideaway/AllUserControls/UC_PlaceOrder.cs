@@ -51,7 +51,7 @@ namespace HazleWood_Hideaway.AllUserControls
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtQuantityUpDown.ResetText();
+            txtQuantityUpDown.Value=0;
             txtTotal.Clear();
 
             String text = listBox1.GetItemText(listBox1.SelectedItem);

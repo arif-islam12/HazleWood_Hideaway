@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccess;
 
 namespace HazleWood_Hideaway.AllUserControls
 {
     public partial class UC_UpdateItems : UserControl
     {
+        function fn = new function();
+        String query;
         public UC_UpdateItems()
         {
             InitializeComponent();
