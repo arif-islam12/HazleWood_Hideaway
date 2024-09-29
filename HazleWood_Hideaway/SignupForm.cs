@@ -21,7 +21,7 @@ namespace HazleWood_Hideaway
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+           this.Close();
         }
 
        
@@ -51,7 +51,7 @@ namespace HazleWood_Hideaway
             }
 
             // Prepare SQL query to insert data into the Users table
-            string query = $"INSERT INTO NUsers (FirstName, LastName, Email, Role, Password, DOB) " +
+            string query = $"INSERT INTO Users (FirstName, LastName, Email, Role, Password, DOB) " +
                            $"VALUES ('{firstName}', '{lastName}', '{email}', '{role}', '{password}', '{dob.ToString("yyyy-MM-dd")}')";
 
             // Call the setDta method from the function class to execute the query

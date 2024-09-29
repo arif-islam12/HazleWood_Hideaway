@@ -77,6 +77,12 @@
     <Compile Include="AllUserControls\UC_UpdateItems.Designer.cs">
       <DependentUpon>UC_UpdateItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="AllUserControls\UC_UserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AllUserControls\UC_UserControl.Designer.cs">
+      <DependentUpon>UC_UserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="AllUserControls\UC_Welcome.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     <Compile Include="SignupForm.Designer.cs">
       <DependentUpon>SignupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\UpdateUser.Designer.cs">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AllUserControls\UC_AddItems.resx">
       <DependentUpon>UC_AddItems.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AllUserControls\UC_UpdateItems.resx">
       <DependentUpon>UC_UpdateItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllUserControls\UC_UserControl.resx">
+      <DependentUpon>UC_UserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AllUserControls\UC_Welcome.resx">
       <DependentUpon>UC_Welcome.cs</DependentUpon>
@@ -136,6 +151,9 @@
     </Compile>
     <EmbeddedResource Include="SignupForm.resx">
       <DependentUpon>SignupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UpdateUser.resx">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

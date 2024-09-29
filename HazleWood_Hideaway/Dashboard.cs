@@ -21,14 +21,17 @@ namespace HazleWood_Hideaway
                 btnAddItems.Hide();
                 btnRemove.Hide();
                 btnUpdate.Hide();
+                guna2Button1.Hide();
             }
             else if (user == "Admin")
             {
                 btnAddItems.Show();
                 btnRemove.Show();
                 btnUpdate.Show();
+                guna2Button1.Show();
             }
         }
+        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -41,6 +44,7 @@ namespace HazleWood_Hideaway
             uC_PlaceOrder1.Visible = false;
             uC_UpdateItems1.Visible = false;
             uC_RemoveItems1.Visible = false;
+            uC_UserControl1.Visible = false;
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -74,6 +78,47 @@ namespace HazleWood_Hideaway
         {
             uC_RemoveItems1.Visible = true;
             uC_RemoveItems1.BringToFront();
+        }
+
+        private void uC_RemoveItems1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            uC_UserControl1.Visible = true;
+            uC_UserControl1.BringToFront();
+        }
+
+        private void uC_UpdateItems1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uC_AddItems1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uC_PlaceOrder1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uC_Welcome1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

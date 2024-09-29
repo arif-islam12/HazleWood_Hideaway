@@ -1,23 +1,17 @@
 ﻿using Guna.UI2.WinForms;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess;
+using System.Data.SqlClient;
 
 namespace HazleWood_Hideaway.AllUserControls
 {
     public partial class UC_RemoveItems : UserControl
     {
-
-        function fn = new function();
+        Database_2 db = new Database_2(); // Using Database_2 class
         String query;
+
         public UC_RemoveItems()
         {
             InitializeComponent();
@@ -27,28 +21,34 @@ namespace HazleWood_Hideaway.AllUserControls
         {
             loadData();
         }
+
         public void loadData()
         {
-            query = "select * from items";
-            DataSet ds = fn.getdata(query);
-            guna2DataGridView1.DataSource = ds.Tables[0];
+            query = "SELECT * FROM items"; // Load all items
+            DataTable dt = db.getData(query); // Using getData method from Database_2
+            guna2DataGridView1.DataSource = dt; // Set the DataSource to the DataTable
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            query = "select * from items where name like '" + txtSearch.Text + "%'";
-            DataSet ds = fn.getdata(query);
-            guna2DataGridView1.DataSource = ds.Tables[0];
+            query = "SELECT * FROM items WHERE name LIKE @name";
+            SqlParameter[] parameters = { new SqlParameter("@name", txtSearch.Text + "%") };
+            DataTable dt = db.getData(query, parameters); // Now works with the updated method
+            guna2DataGridView1.DataSource = dt;
         }
 
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (MessageBox.Show("Delete Item?", "Important Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            if (e.RowIndex >= 0)
             {
-                int id = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                query = "delete from items where iid=" + id + "";
-                fn.setDta(query);
-                loadData();
+                if (MessageBox.Show("Delete Item?", "Important Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    int id = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    query = "DELETE FROM items WHERE iid = @iid";
+                    SqlParameter[] parameters = { new SqlParameter("@iid", id) };
+                    db.setDta(query, parameters); // Now works with the updated method
+                    loadData();
+                }
             }
         }
     }

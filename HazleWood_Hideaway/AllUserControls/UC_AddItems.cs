@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using DataAccess;
 
@@ -14,12 +8,14 @@ namespace HazleWood_Hideaway.AllUserControls
 {
     public partial class UC_AddItems : UserControl
     {
-        function fn = new function();
+        Database_2 db = new Database_2(); // Using Database_2 class
         String query;
+
         public UC_AddItems()
         {
             InitializeComponent();
         }
+
         public void clearAll()
         {
             txtCatagory.SelectedIndex = -1;
@@ -29,16 +25,27 @@ namespace HazleWood_Hideaway.AllUserControls
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            query = "insert into items (name,catagory,price) values('" + txtItemName.Text + "','" + txtCatagory.Text + "','" + txtPrice.Text + "')";
-            fn.setDta(query);
+            // Parameterized query to insert a new item
+            query = "INSERT INTO items (name, catagory, price) VALUES (@name, @catagory, @price)";
+            SqlParameter[] parameters = {
+                new SqlParameter("@name", txtItemName.Text),
+                new SqlParameter("@catagory", txtCatagory.Text),
+                new SqlParameter("@price", txtPrice.Text)
+            };
 
-            clearAll();
+            db.setDta(query, parameters); // Using setDta method from Database_2
+
+            clearAll(); // Clear input fields after adding the item
         }
-        
 
+        private void UC_AddItems_Leave(object sender, EventArgs e)
+        {
+            clearAll(); // Clear fields when leaving the control
+        }
         private void UC_AddItems_Leave_1(object sender, EventArgs e)
         {
             clearAll();
         }
+
     }
 }

@@ -2,22 +2,21 @@
 using DGVPrinterHelper;
 using Guna.UI2.WinForms;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HazleWood_Hideaway.AllUserControls
 {
     public partial class UC_PlaceOrder : UserControl
     {
-        function fn = new function();
+        Database_2 db = new Database_2(); // Use Database_2 class
         string query;
+        protected int n; // Declare variable n for DataGridView row index
+        protected int total = 0; // Declare total at class level
+        protected int amount; // Declare amount at class level
+
         public UC_PlaceOrder()
         {
             InitializeComponent();
@@ -25,46 +24,49 @@ namespace HazleWood_Hideaway.AllUserControls
 
         private void comboCatagory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String catagory = comboCatagory.Text;
-            query = "select name from items where catagory='" + catagory + "'";
-            DataSet ds = fn.getdata(query);
-            showItemList(query);
+            string catagory = comboCatagory.Text;
+            query = "SELECT name FROM items WHERE catagory = @catagory";
+            SqlParameter[] parameters = { new SqlParameter("@catagory", catagory) };
+            showItemList(query, parameters);
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            String catagory = comboCatagory.Text;
-            query = "select name from items where catagory='" + catagory + "' and name like'" + txtSearch.Text + "%'";
-            DataSet ds = fn.getdata(query);
-            showItemList(query);
+            string catagory = comboCatagory.Text;
+            query = "SELECT name FROM items WHERE catagory = @catagory AND name LIKE @name";
+            SqlParameter[] parameters = {
+                new SqlParameter("@catagory", catagory),
+                new SqlParameter("@name", txtSearch.Text + "%")
+            };
+            showItemList(query, parameters);
         }
-        private void showItemList(String query)
+
+        private void showItemList(string query, SqlParameter[] parameters)
         {
             listBox1.Items.Clear();
-            DataSet ds = fn.getdata(query);
+            DataTable dt = db.getData(query, parameters);
 
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                listBox1.Items.Add(ds.Tables[0].Rows[i][0].ToString());
+                listBox1.Items.Add(dt.Rows[i][0].ToString());
             }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtQuantityUpDown.Value=0;
+            txtQuantityUpDown.Value = 0;
             txtTotal.Clear();
 
-            String text = listBox1.GetItemText(listBox1.SelectedItem);
+            string text = listBox1.GetItemText(listBox1.SelectedItem);
             txtItemName.Text = text;
 
-            query = "select price from items where name='" + text + "'";
-            DataSet ds = fn.getdata(query);
-            txtPrice.Text = ds.Tables[0].Rows[0][0].ToString();
-            try
+            query = "SELECT price FROM items WHERE name = @name";
+            SqlParameter[] parameters = { new SqlParameter("@name", text) };
+            DataTable dt = db.getData(query, parameters);
+            if (dt.Rows.Count > 0)
             {
-                txtPrice.Text = ds.Tables[0].Rows[0][0].ToString();
+                txtPrice.Text = dt.Rows[0][0].ToString();
             }
-            catch { }
         }
 
         private void txtQuantityUpDown_ValueChanged(object sender, EventArgs e)
@@ -73,26 +75,23 @@ namespace HazleWood_Hideaway.AllUserControls
             Int64 price = Int64.Parse(txtPrice.Text);
             txtTotal.Text = (quan * price).ToString();
         }
-        protected int n, total = 0;
-        int amount;
-
-       
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
             DGVPrinter printer = new DGVPrinter();
             printer.Title = "Customer Bill";
-            printer.SubTitle = String.Format("Date: {0}", DateTime.Now.Date);
+            printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date);
             printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
             printer.PageNumbers = true;
             printer.PageNumberInHeader = false;
             printer.PorportionalColumns = true;
             printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = "Total Payable Amount:" + labelTotalAmount.Text;
+            printer.Footer = "Total Payable Amount: " + labelTotalAmount.Text;
             printer.FooterSpacing = 15;
             printer.PrintDataGridView(guna2DataGridView1);
 
-            total = 0;
+            // Reset totals after printing
+            total = 0; // Reset total after printing
             guna2DataGridView1.Rows.Clear();
             labelTotalAmount.Text = "TK " + total;
         }
@@ -106,12 +105,13 @@ namespace HazleWood_Hideaway.AllUserControls
                 guna2DataGridView1.Rows[n].Cells[1].Value = txtPrice.Text;
                 guna2DataGridView1.Rows[n].Cells[2].Value = txtQuantityUpDown.Value;
                 guna2DataGridView1.Rows[n].Cells[3].Value = txtTotal.Text;
-                total = total + int.Parse(txtTotal.Text);
+
+                total += int.Parse(txtTotal.Text); // Update total
                 labelTotalAmount.Text = "TK " + total;
             }
             else
             {
-                MessageBox.Show("Minimum Quantity need to be 1", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Minimum Quantity needs to be 1", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -153,10 +153,5 @@ namespace HazleWood_Hideaway.AllUserControls
                 MessageBox.Show("An error occurred while selecting the item amount: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        
-
-
-
     }
 }

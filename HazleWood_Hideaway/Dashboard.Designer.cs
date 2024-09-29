@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnLogOut = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnRemove = new Guna.UI2.WinForms.Guna2Button();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
@@ -44,6 +45,7 @@
             this.uC_PlaceOrder1 = new HazleWood_Hideaway.AllUserControls.UC_PlaceOrder();
             this.uC_Welcome1 = new HazleWood_Hideaway.AllUserControls.UC_Welcome();
             this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
+            this.uC_UserControl1 = new HazleWood_Hideaway.AllUserControls.UC_UserControl();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +53,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.guna2Panel1.Controls.Add(this.guna2Button1);
             this.guna2Panel1.Controls.Add(this.btnLogOut);
             this.guna2Panel1.Controls.Add(this.btnRemove);
             this.guna2Panel1.Controls.Add(this.btnUpdate);
@@ -62,6 +65,30 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(195, 561);
             this.guna2Panel1.TabIndex = 0;
+            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.Animated = true;
+            this.guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.guna2Button1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.guna2Button1.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.guna2Button1.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.guna2Transition1.SetDecoration(this.guna2Button1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Location = new System.Drawing.Point(12, 373);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(201, 61);
+            this.guna2Button1.TabIndex = 20;
+            this.guna2Button1.Text = "Users Control";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // btnLogOut
             // 
@@ -198,6 +225,7 @@
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.guna2Panel2.Controls.Add(this.uC_UserControl1);
             this.guna2Panel2.Controls.Add(this.uC_RemoveItems1);
             this.guna2Panel2.Controls.Add(this.uC_UpdateItems1);
             this.guna2Panel2.Controls.Add(this.uC_AddItems1);
@@ -208,6 +236,7 @@
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(788, 561);
             this.guna2Panel2.TabIndex = 1;
+            this.guna2Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel2_Paint);
             // 
             // uC_RemoveItems1
             // 
@@ -217,6 +246,7 @@
             this.uC_RemoveItems1.Name = "uC_RemoveItems1";
             this.uC_RemoveItems1.Size = new System.Drawing.Size(788, 561);
             this.uC_RemoveItems1.TabIndex = 4;
+            this.uC_RemoveItems1.Load += new System.EventHandler(this.uC_RemoveItems1_Load);
             // 
             // uC_UpdateItems1
             // 
@@ -226,6 +256,7 @@
             this.uC_UpdateItems1.Name = "uC_UpdateItems1";
             this.uC_UpdateItems1.Size = new System.Drawing.Size(788, 561);
             this.uC_UpdateItems1.TabIndex = 3;
+            this.uC_UpdateItems1.Load += new System.EventHandler(this.uC_UpdateItems1_Load);
             // 
             // uC_AddItems1
             // 
@@ -235,6 +266,7 @@
             this.uC_AddItems1.Name = "uC_AddItems1";
             this.uC_AddItems1.Size = new System.Drawing.Size(788, 561);
             this.uC_AddItems1.TabIndex = 2;
+            this.uC_AddItems1.Load += new System.EventHandler(this.uC_AddItems1_Load);
             // 
             // uC_PlaceOrder1
             // 
@@ -244,6 +276,7 @@
             this.uC_PlaceOrder1.Name = "uC_PlaceOrder1";
             this.uC_PlaceOrder1.Size = new System.Drawing.Size(788, 561);
             this.uC_PlaceOrder1.TabIndex = 1;
+            this.uC_PlaceOrder1.Load += new System.EventHandler(this.uC_PlaceOrder1_Load);
             // 
             // uC_Welcome1
             // 
@@ -253,6 +286,7 @@
             this.uC_Welcome1.Name = "uC_Welcome1";
             this.uC_Welcome1.Size = new System.Drawing.Size(788, 561);
             this.uC_Welcome1.TabIndex = 0;
+            this.uC_Welcome1.Load += new System.EventHandler(this.uC_Welcome1_Load);
             // 
             // guna2Transition1
             // 
@@ -274,6 +308,14 @@
             animation1.TimeCoeff = 0F;
             animation1.TransparencyCoeff = 1F;
             this.guna2Transition1.DefaultAnimation = animation1;
+            // 
+            // uC_UserControl1
+            // 
+            this.guna2Transition1.SetDecoration(this.uC_UserControl1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.uC_UserControl1.Location = new System.Drawing.Point(3, 0);
+            this.uC_UserControl1.Name = "uC_UserControl1";
+            this.uC_UserControl1.Size = new System.Drawing.Size(788, 561);
+            this.uC_UserControl1.TabIndex = 5;
             // 
             // Dashboard
             // 
@@ -312,6 +354,8 @@
         private AllUserControls.UC_AddItems uC_AddItems1;
         private AllUserControls.UC_UpdateItems uC_UpdateItems1;
         private AllUserControls.UC_RemoveItems uC_RemoveItems1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private AllUserControls.UC_UserControl uC_UserControl1;
     }
 }
 

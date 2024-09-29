@@ -1,44 +1,90 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace DataAccess
 {
     public class Database_2
     {
+        // Method to get the connection string for the database
         protected SqlConnection GetConnection()
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "data source =LAPTOP-8LBDOARG\\SQLEXPRESS; database= user;Trusted_Connection=True";
+            conn.ConnectionString = "data source=DESKTOP-0EICFO7;database=Hwood;Trusted_Connection=True"; // Adjust your connection string as needed
             return conn;
         }
-        public DataSet getdata(String query)
-        {
-            SqlConnection conn = GetConnection();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = query;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            return ds;
-        }
-        public void setDta(String query)
-        {
-            SqlConnection conn = GetConnection();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            conn.Open();
-            cmd.CommandText = query;
-            cmd.ExecuteNonQuery();
-            conn.Close();
 
-            MessageBox.Show("Data Proceseed Successfully.", "Successe", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        // Method to return DataTable for a given SQL query with optional parameters
+        public DataTable getData(string query, SqlParameter[] parameters = null)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection conn = GetConnection())
+                {
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters); // Adding SQL parameters if available
+                    }
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);  // Fills the DataTable with the query result
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dt; // Returning the DataTable
+        }
+
+        // Method to execute INSERT, UPDATE, DELETE SQL commands with optional parameters
+        public void setDta(string query, SqlParameter[] parameters = null)
+        {
+            try
+            {
+                using (SqlConnection conn = GetConnection())
+                {
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters); // Adding SQL parameters if available
+                    }
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery(); // Executes the non-query (INSERT, UPDATE, DELETE)
+                    conn.Close();
+                }
+
+                MessageBox.Show("Data processed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Method to execute a query using SqlCommand object directly
+        public void setDta(SqlCommand cmd)
+        {
+            try
+            {
+                using (SqlConnection conn = GetConnection())
+                {
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery(); // Executes the non-query with prepared command
+                    conn.Close();
+                }
+
+                MessageBox.Show("Data processed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

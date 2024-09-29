@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess;
-//using UserControl;
 
 namespace HazleWood_Hideaway
 {
@@ -24,8 +17,6 @@ namespace HazleWood_Hideaway
             Application.Exit();
         }
 
-
-
         private void btnGuest_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Dashboard ds = new Dashboard("Guest");
@@ -39,14 +30,14 @@ namespace HazleWood_Hideaway
             string password = txtPassword.Text;
 
             // SQL query to check if the provided email and password exist in the database
-            string query = $"SELECT Email FROM NUsers WHERE Email = '{email}' AND Password = '{password}'";
+            string query = $"SELECT Email FROM Users WHERE Email = '{email}' AND Password = '{password}'";
 
             // Use the existing function class to execute the query
-            DataAccess.Database_2 dataAccess = new DataAccess.Database_2();
-            DataSet ds = dataAccess.getdata(query);
+            Database_2 dataAccess = new Database_2();
+            DataTable dt = dataAccess.getData(query);
 
             // Check if the query returned any rows
-            if (ds.Tables[0].Rows.Count > 0)
+            if (dt.Rows.Count > 0)
             {
                 // Email domain check for access level
                 if (email.EndsWith("@admin.com"))
@@ -74,7 +65,6 @@ namespace HazleWood_Hideaway
                 // Invalid credentials, show error message
                 MessageBox.Show("Invalid Email or Password", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void btnSignup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
