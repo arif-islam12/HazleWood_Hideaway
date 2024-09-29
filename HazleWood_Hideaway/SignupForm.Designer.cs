@@ -50,7 +50,7 @@
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(102, 629);
-            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(176, 22);
             this.guna2HtmlLabel3.TabIndex = 10;
@@ -68,7 +68,7 @@
             this.btnSingup.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSingup.ForeColor = System.Drawing.Color.White;
             this.btnSingup.Location = new System.Drawing.Point(53, 558);
-            this.btnSingup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSingup.Margin = new System.Windows.Forms.Padding(4);
             this.btnSingup.Name = "btnSingup";
             this.btnSingup.Size = new System.Drawing.Size(327, 44);
             this.btnSingup.TabIndex = 9;
@@ -206,7 +206,7 @@
             this.dtpDOB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpDOB.Location = new System.Drawing.Point(24, 465);
-            this.dtpDOB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDOB.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDOB.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDOB.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDOB.Name = "dtpDOB";
@@ -226,7 +226,7 @@
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
             this.btnExit.Location = new System.Drawing.Point(0, 0);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(40, 31);
             this.btnExit.TabIndex = 16;
@@ -254,7 +254,7 @@
             this.guna2PictureBox1.Image = global::HazleWood_Hideaway.Properties.Resources.logo1;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(65, 52);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(267, 110);
             this.guna2PictureBox1.TabIndex = 18;
@@ -269,7 +269,7 @@
             this.cmbRole.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbRole.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cmbRole.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbRole.ForeColor = System.Drawing.Color.White;
             this.cmbRole.ItemHeight = 30;
             this.cmbRole.Items.AddRange(new object[] {
             "@admin.com",
@@ -299,9 +299,10 @@
             this.Controls.Add(this.btnSingup);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
+            this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SignupForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hazlewood Hideaway";
