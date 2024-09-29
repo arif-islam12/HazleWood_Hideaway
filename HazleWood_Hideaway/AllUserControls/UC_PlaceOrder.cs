@@ -126,7 +126,7 @@ namespace HazleWood_Hideaway.AllUserControls
                     if (guna2DataGridView1.Rows[e.RowIndex].Cells[3].Value != null)
                     {
                         // Parse the amount from the selected cell
-                        amount = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
+                        int amount = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
 
                         // Ask the user if they want to remove the selected item
                         DialogResult result = MessageBox.Show("Do you want to remove this item?", "Confirm Removal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

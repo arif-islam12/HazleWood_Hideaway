@@ -47,6 +47,7 @@
             this.labelTotalAmount = new System.Windows.Forms.Label();
             this.comboCatagory = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.txtTableNumber = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantityUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
@@ -173,7 +174,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(75, 273);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(259, 320);
             this.listBox1.TabIndex = 8;
@@ -209,7 +210,7 @@
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(408, 370);
-            this.guna2DataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2DataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowHeadersWidth = 51;
@@ -272,7 +273,7 @@
             this.btnAddToCart.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAddToCart.ForeColor = System.Drawing.Color.White;
             this.btnAddToCart.Location = new System.Drawing.Point(813, 305);
-            this.btnAddToCart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddToCart.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddToCart.Name = "btnAddToCart";
             this.btnAddToCart.Size = new System.Drawing.Size(160, 44);
             this.btnAddToCart.TabIndex = 10;
@@ -289,7 +290,7 @@
             this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnPrint.ForeColor = System.Drawing.Color.White;
             this.btnPrint.Location = new System.Drawing.Point(813, 628);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(160, 44);
             this.btnPrint.TabIndex = 12;
@@ -330,7 +331,7 @@
             "Dessert",
             "Shop Special"});
             this.comboCatagory.Location = new System.Drawing.Point(75, 169);
-            this.comboCatagory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboCatagory.Margin = new System.Windows.Forms.Padding(4);
             this.comboCatagory.Name = "comboCatagory";
             this.comboCatagory.Size = new System.Drawing.Size(257, 36);
             this.comboCatagory.TabIndex = 14;
@@ -341,17 +342,38 @@
             this.guna2PictureBox1.Image = global::HazleWood_Hideaway.Properties.Resources.PlaceOrderBG1;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(1051, 690);
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
+            // 
+            // txtTableNumber
+            // 
+            this.txtTableNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTableNumber.DefaultText = "";
+            this.txtTableNumber.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTableNumber.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTableNumber.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTableNumber.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTableNumber.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTableNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTableNumber.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTableNumber.Location = new System.Drawing.Point(439, 319);
+            this.txtTableNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTableNumber.Name = "txtTableNumber";
+            this.txtTableNumber.PasswordChar = '\0';
+            this.txtTableNumber.PlaceholderText = "";
+            this.txtTableNumber.SelectedText = "";
+            this.txtTableNumber.Size = new System.Drawing.Size(229, 48);
+            this.txtTableNumber.TabIndex = 15;
             // 
             // UC_PlaceOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.Controls.Add(this.txtTableNumber);
             this.Controls.Add(this.comboCatagory);
             this.Controls.Add(this.labelTotalAmount);
             this.Controls.Add(this.btnPrint);
@@ -364,7 +386,7 @@
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtItemName);
             this.Controls.Add(this.guna2PictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_PlaceOrder";
             this.Size = new System.Drawing.Size(1051, 690);
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantityUpDown)).EndInit();
@@ -393,5 +415,6 @@
         private Guna.UI2.WinForms.Guna2Button btnPrint;
         private System.Windows.Forms.Label labelTotalAmount;
         private Guna.UI2.WinForms.Guna2ComboBox comboCatagory;
+        private Guna.UI2.WinForms.Guna2TextBox txtTableNumber;
     }
 }
