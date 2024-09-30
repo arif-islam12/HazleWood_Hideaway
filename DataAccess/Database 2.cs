@@ -11,7 +11,7 @@ namespace DataAccess
         protected SqlConnection GetConnection()
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "data source=DESKTOP-0EICFO7;database=Hwood;Trusted_Connection=True"; // Adjust your connection string as needed
+            conn.ConnectionString = "data source=LAPTOP-8LBDOARG\\SQLEXPRESS;database=user;Trusted_Connection=True"; // Adjust your connection string as needed
             return conn;
         }
 

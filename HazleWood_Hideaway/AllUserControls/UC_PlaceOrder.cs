@@ -15,7 +15,6 @@ namespace HazleWood_Hideaway.AllUserControls
         string query;
         protected int n; // Declare variable n for DataGridView row index
         protected int total = 0; // Declare total at class level
-        protected int amount; // Declare amount at class level
 
         public UC_PlaceOrder()
         {
@@ -86,9 +85,12 @@ namespace HazleWood_Hideaway.AllUserControls
             printer.PageNumberInHeader = false;
             printer.PorportionalColumns = true;
             printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = "Total Payable Amount: " + labelTotalAmount.Text;
+            printer.Footer = "Total Payable Amount: " + labelTotalAmount.Text + "\nTable Number: " + txtTableNumber.Text; // Added table number to footer
             printer.FooterSpacing = 15;
             printer.PrintDataGridView(guna2DataGridView1);
+
+            // Call to send data to the chef's database
+            send_chef();
 
             // Reset totals after printing
             total = 0; // Reset total after printing
@@ -151,6 +153,50 @@ namespace HazleWood_Hideaway.AllUserControls
             {
                 // Handle any exceptions (e.g., empty or invalid cells)
                 MessageBox.Show("An error occurred while selecting the item amount: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Method to send order details to the chef's database
+        private void send_chef()
+        {
+            // Check if the DataGridView has any rows
+            if (guna2DataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("No items in the cart to send to the chef.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return; // Exit the method if there are no items
+            }
+
+            // Check if txtTableNumber is initialized
+            if (string.IsNullOrEmpty(txtTableNumber.Text))
+            {
+                MessageBox.Show("Please enter a valid table number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit the method if the table number is empty
+            }
+
+            string query = "INSERT INTO chef_order (item_name, quantity, table_number) VALUES (@item_name, @quantity, @table_number)";
+
+            try
+            {
+                for (int i = 0; i < guna2DataGridView1.Rows.Count; i++)
+                {
+                    // Ensure the row is not the new row placeholder
+                    if (guna2DataGridView1.Rows[i].IsNewRow) continue;
+
+                    SqlParameter[] parameters = {
+                        new SqlParameter("@item_name", guna2DataGridView1.Rows[i].Cells[0].Value?.ToString() ?? string.Empty),
+                        new SqlParameter("@quantity", guna2DataGridView1.Rows[i].Cells[2].Value?.ToString() ?? string.Empty),
+                        new SqlParameter("@table_number", txtTableNumber.Text) // Ensure this is your table number textbox
+                    };
+
+                    // Call to the Database_2 method
+                    db.setDta(query, parameters);
+                }
+
+                MessageBox.Show("Order sent to the chef successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while sending the order: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
