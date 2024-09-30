@@ -54,6 +54,14 @@ namespace HazleWood_Hideaway
                     dashboard.Show();
                     this.Hide();
                 }
+                else if (email.EndsWith("@chef.com"))
+                {
+                    // Guest access
+                   chef cf = new chef();
+            cf.Show();
+            this.Hide();
+                }
+
                 else
                 {
                     // Default case for unknown email domains

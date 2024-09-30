@@ -89,6 +89,12 @@
     <Compile Include="AllUserControls\UC_Welcome.Designer.cs">
       <DependentUpon>UC_Welcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="chef.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chef.Designer.cs">
+      <DependentUpon>chef.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AllUserControls\UC_Welcome.resx">
       <DependentUpon>UC_Welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chef.resx">
+      <DependentUpon>chef.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
