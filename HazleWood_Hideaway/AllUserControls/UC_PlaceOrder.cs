@@ -77,25 +77,39 @@ namespace HazleWood_Hideaway.AllUserControls
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            DGVPrinter printer = new DGVPrinter();
-            printer.Title = "Customer Bill";
-            printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date);
-            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-            printer.PageNumbers = true;
-            printer.PageNumberInHeader = false;
-            printer.PorportionalColumns = true;
-            printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = "Total Payable Amount: " + labelTotalAmount.Text + "\nTable Number: " + txtTableNumber.Text; // Added table number to footer
-            printer.FooterSpacing = 15;
-            printer.PrintDataGridView(guna2DataGridView1);
+            if (guna2DataGridView1.Rows.Count == 1)
+            {
+                MessageBox.Show("No items in the cart to send to the chef.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return; // Exit the method if there are no items
+            }
 
-            // Call to send data to the chef's database
-            send_chef();
+            else if (string.IsNullOrEmpty(txtTableNumber.Text))
+            {
+                MessageBox.Show("Please enter a valid table number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit the method if the table number is empty
+            }
+            else
+            {
+                DGVPrinter printer = new DGVPrinter();
+                printer.Title = "Customer Bill";
+                printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date);
+                printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                printer.PageNumbers = true;
+                printer.PageNumberInHeader = false;
+                printer.PorportionalColumns = true;
+                printer.HeaderCellAlignment = StringAlignment.Near;
+                printer.Footer = "Total Payable Amount: " + labelTotalAmount.Text + "\nTable Number: " + txtTableNumber.Text; // Added table number to footer
+                printer.FooterSpacing = 15;
+                printer.PrintDataGridView(guna2DataGridView1);
 
-            // Reset totals after printing
-            total = 0; // Reset total after printing
-            guna2DataGridView1.Rows.Clear();
-            labelTotalAmount.Text = "TK " + total;
+                // Call to send data to the chef's database
+                send_chef();
+
+                // Reset totals after printing
+                total = 0; // Reset total after printing
+                guna2DataGridView1.Rows.Clear();
+                labelTotalAmount.Text = "TK " + total;
+            }
         }
 
         private void btnAddToCart_Click(object sender, EventArgs e)
@@ -160,18 +174,10 @@ namespace HazleWood_Hideaway.AllUserControls
         private void send_chef()
         {
             // Check if the DataGridView has any rows
-            if (guna2DataGridView1.Rows.Count == 0)
-            {
-                MessageBox.Show("No items in the cart to send to the chef.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return; // Exit the method if there are no items
-            }
+
 
             // Check if txtTableNumber is initialized
-            if (string.IsNullOrEmpty(txtTableNumber.Text))
-            {
-                MessageBox.Show("Please enter a valid table number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Exit the method if the table number is empty
-            }
+
 
             string query = "INSERT INTO chef_order (item_name, quantity, table_number) VALUES (@item_name, @quantity, @table_number)";
 
