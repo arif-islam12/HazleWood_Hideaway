@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +19,10 @@ namespace HazleWood_Hideaway
         public chef()
         {
             InitializeComponent();
+            LoadData();
+
         }
+        
 
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -54,6 +58,11 @@ namespace HazleWood_Hideaway
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        public void LoadData()
         {
             string query = "SELECT item_name, quantity, table_number, order_date FROM chef_order";
             DataTable dt = db.getData(query);

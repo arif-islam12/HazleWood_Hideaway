@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SalesReport;
 
 namespace HazleWood_Hideaway
 {
@@ -22,6 +23,7 @@ namespace HazleWood_Hideaway
                 btnRemove.Hide();
                 btnUpdate.Hide();
                 guna2Button1.Hide();
+                btnSalesReport.Hide();
             }
             else if (user == "Admin")
             {
@@ -29,6 +31,8 @@ namespace HazleWood_Hideaway
                 btnRemove.Show();
                 btnUpdate.Show();
                 guna2Button1.Show();
+                btnSalesReport.Show();
+                btnPlaceOrder.Hide();
             }
         }
         
@@ -119,6 +123,12 @@ namespace HazleWood_Hideaway
         private void uC_Welcome1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSalesReport_Click(object sender, EventArgs e)
+        {
+            SalesReportForm reportForm = new SalesReportForm();
+            reportForm.Show();
         }
     }
 }

@@ -216,6 +216,10 @@
       <Project>{f1de0cfe-9931-44e9-9f94-36a6ff915d4c}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SalesReport\SalesReport.csproj">
+      <Project>{aec35991-b262-416c-8401-6db55c326c99}</Project>
+      <Name>SalesReport</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,14 +11,16 @@ namespace HazleWood_Hideaway.AllUserControls
 {
     public partial class UC_PlaceOrder : UserControl
     {
-        Database_2 db = new Database_2(); // Use Database_2 class
+        Database_2 db = new Database_2();
         string query;
-        protected int n; // Declare variable n for DataGridView row index
-        protected int total = 0; // Declare total at class level
+        protected int n;
+        protected int total = 0;
+        protected int invoiceNumber = 0; // Invoice number variable
 
         public UC_PlaceOrder()
         {
             InitializeComponent();
+            invoiceNumber = db.GetMaxInvoiceNumber(); // Retrieve the latest invoice number from the database
         }
 
         private void comboCatagory_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,9 +72,12 @@ namespace HazleWood_Hideaway.AllUserControls
 
         private void txtQuantityUpDown_ValueChanged(object sender, EventArgs e)
         {
-            Int64 quan = Int64.Parse(txtQuantityUpDown.Value.ToString());
-            Int64 price = Int64.Parse(txtPrice.Text);
-            txtTotal.Text = (quan * price).ToString();
+            if (!string.IsNullOrEmpty(txtPrice.Text))
+            {
+                int quantity = (int)txtQuantityUpDown.Value;
+                decimal price = decimal.Parse(txtPrice.Text);
+                txtTotal.Text = (quantity * price).ToString();
+            }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -80,16 +85,17 @@ namespace HazleWood_Hideaway.AllUserControls
             if (guna2DataGridView1.Rows.Count == 1)
             {
                 MessageBox.Show("No items in the cart to send to the chef.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return; // Exit the method if there are no items
+                return;
             }
-
             else if (string.IsNullOrEmpty(txtTableNumber.Text))
             {
                 MessageBox.Show("Please enter a valid table number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Exit the method if the table number is empty
+                return;
             }
             else
             {
+                invoiceNumber++; // Increment the invoice number
+
                 DGVPrinter printer = new DGVPrinter();
                 printer.Title = "Customer Bill";
                 printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date);
@@ -98,17 +104,50 @@ namespace HazleWood_Hideaway.AllUserControls
                 printer.PageNumberInHeader = false;
                 printer.PorportionalColumns = true;
                 printer.HeaderCellAlignment = StringAlignment.Near;
-                printer.Footer = "Total Payable Amount: " + labelTotalAmount.Text + "\nTable Number: " + txtTableNumber.Text; // Added table number to footer
+                printer.Footer = $"Invoice Number: {invoiceNumber}\nTotal Payable Amount: {labelTotalAmount.Text}\nTable Number: {txtTableNumber.Text}";
                 printer.FooterSpacing = 15;
-                printer.PrintDataGridView(guna2DataGridView1);
 
-                // Call to send data to the chef's database
-                send_chef();
+                // Set the page size to an invoice size page
+                printer.PrintPreviewDataGridView(guna2DataGridView1);
 
-                // Reset totals after printing
-                total = 0; // Reset total after printing
+                // Store the invoice and order details in the database
+                StoreInvoiceAndOrder();
+
+                total = 0;
                 guna2DataGridView1.Rows.Clear();
                 labelTotalAmount.Text = "TK " + total;
+            }
+        }
+
+        private void StoreInvoiceAndOrder()
+        {
+            string query = "INSERT INTO SalesHistory (InvoiceNumber, Date, TotalAmount, TableNumber, ItemDetails) VALUES (@InvoiceNumber, @Date, @TotalAmount, @TableNumber, @ItemDetails)";
+            try
+            {
+                string itemDetails = "";
+                for (int i = 0; i < guna2DataGridView1.Rows.Count; i++)
+                {
+                    if (guna2DataGridView1.Rows[i].IsNewRow) continue;
+
+                    itemDetails += $"{guna2DataGridView1.Rows[i].Cells[0].Value} (Qty: {guna2DataGridView1.Rows[i].Cells[2].Value}), ";
+                }
+                // Remove the last comma and space
+                if (itemDetails.Length > 2) itemDetails = itemDetails.Substring(0, itemDetails.Length - 2);
+
+                SqlParameter[] parameters = {
+                    new SqlParameter("@InvoiceNumber", invoiceNumber),
+                    new SqlParameter("@Date", DateTime.Now),
+                    new SqlParameter("@TotalAmount", labelTotalAmount.Text.Replace("TK ", "").Trim()),
+                    new SqlParameter("@TableNumber", txtTableNumber.Text),
+                    new SqlParameter("@ItemDetails", itemDetails)
+                };
+
+                db.setDta(query, parameters);
+                MessageBox.Show("Order details saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while saving the invoice: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -122,7 +161,7 @@ namespace HazleWood_Hideaway.AllUserControls
                 guna2DataGridView1.Rows[n].Cells[2].Value = txtQuantityUpDown.Value;
                 guna2DataGridView1.Rows[n].Cells[3].Value = txtTotal.Text;
 
-                total += int.Parse(txtTotal.Text); // Update total
+                total += int.Parse(txtTotal.Text);
                 labelTotalAmount.Text = "TK " + total;
             }
             else
@@ -133,76 +172,20 @@ namespace HazleWood_Hideaway.AllUserControls
 
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                // Check if the clicked row index is valid (non-header and non-out-of-bound row)
-                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                if (guna2DataGridView1.Rows[e.RowIndex].Cells[3].Value != null)
                 {
-                    // Check if the selected row and cell contain a valid value
-                    if (guna2DataGridView1.Rows[e.RowIndex].Cells[3].Value != null)
+                    int amount = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
+                    DialogResult result = MessageBox.Show("Do you want to remove this item?", "Confirm Removal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
                     {
-                        // Parse the amount from the selected cell
-                        int amount = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
-
-                        // Ask the user if they want to remove the selected item
-                        DialogResult result = MessageBox.Show("Do you want to remove this item?", "Confirm Removal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                        if (result == DialogResult.Yes)
-                        {
-                            // If "Yes", remove the selected item and update the total amount
-                            total -= amount;
-                            labelTotalAmount.Text = "TK " + total;
-
-                            // Remove the selected row from the DataGridView
-                            guna2DataGridView1.Rows.RemoveAt(e.RowIndex);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Selected cell does not contain a valid amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        total -= amount;
+                        labelTotalAmount.Text = "TK " + total;
+                        guna2DataGridView1.Rows.RemoveAt(e.RowIndex);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                // Handle any exceptions (e.g., empty or invalid cells)
-                MessageBox.Show("An error occurred while selecting the item amount: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Method to send order details to the chef's database
-        private void send_chef()
-        {
-            // Check if the DataGridView has any rows
-
-
-            // Check if txtTableNumber is initialized
-
-
-            string query = "INSERT INTO chef_order (item_name, quantity, table_number) VALUES (@item_name, @quantity, @table_number)";
-
-            try
-            {
-                for (int i = 0; i < guna2DataGridView1.Rows.Count; i++)
-                {
-                    // Ensure the row is not the new row placeholder
-                    if (guna2DataGridView1.Rows[i].IsNewRow) continue;
-
-                    SqlParameter[] parameters = {
-                        new SqlParameter("@item_name", guna2DataGridView1.Rows[i].Cells[0].Value?.ToString() ?? string.Empty),
-                        new SqlParameter("@quantity", guna2DataGridView1.Rows[i].Cells[2].Value?.ToString() ?? string.Empty),
-                        new SqlParameter("@table_number", txtTableNumber.Text) // Ensure this is your table number textbox
-                    };
-
-                    // Call to the Database_2 method
-                    db.setDta(query, parameters);
-                }
-
-                MessageBox.Show("Order sent to the chef successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while sending the order: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

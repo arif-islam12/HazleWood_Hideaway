@@ -11,7 +11,7 @@ namespace DataAccess
         protected SqlConnection GetConnection()
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "data source=LAPTOP-8LBDOARG\\SQLEXPRESS;database=user;Trusted_Connection=True"; // Adjust your connection string as needed
+            conn.ConnectionString = "data source=DESKTOP-0EICFO7;database=Hwood;Trusted_Connection=True"; // Adjust your connection string as needed
             return conn;
         }
 
@@ -85,6 +85,26 @@ namespace DataAccess
             {
                 MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Method to retrieve the maximum invoice number from the SalesHistory table
+        public int GetMaxInvoiceNumber()
+        {
+            int maxInvoiceNumber = 0;
+            string query = "SELECT MAX(InvoiceNumber) FROM SalesHistory";
+            try
+            {
+                DataTable dt = getData(query);
+                if (dt.Rows.Count > 0 && dt.Rows[0][0] != DBNull.Value)
+                {
+                    maxInvoiceNumber = Convert.ToInt32(dt.Rows[0][0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving maximum invoice number: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return maxInvoiceNumber; // Return the highest invoice number
         }
     }
 }

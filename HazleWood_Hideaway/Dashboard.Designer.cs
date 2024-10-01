@@ -31,21 +31,22 @@
             Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSalesReport = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.btnLogOut = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnRemove = new Guna.UI2.WinForms.Guna2Button();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
             this.btnAddItems = new Guna.UI2.WinForms.Guna2Button();
             this.btnPlaceOrder = new Guna.UI2.WinForms.Guna2Button();
             this.btnExit = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
+            this.btnLogOut = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.uC_UserControl1 = new HazleWood_Hideaway.AllUserControls.UC_UserControl();
             this.uC_RemoveItems1 = new HazleWood_Hideaway.AllUserControls.UC_RemoveItems();
             this.uC_UpdateItems1 = new HazleWood_Hideaway.AllUserControls.UC_UpdateItems();
             this.uC_AddItems1 = new HazleWood_Hideaway.AllUserControls.UC_AddItems();
             this.uC_PlaceOrder1 = new HazleWood_Hideaway.AllUserControls.UC_PlaceOrder();
             this.uC_Welcome1 = new HazleWood_Hideaway.AllUserControls.UC_Welcome();
-            this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
-            this.uC_UserControl1 = new HazleWood_Hideaway.AllUserControls.UC_UserControl();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.guna2Panel1.Controls.Add(this.btnSalesReport);
             this.guna2Panel1.Controls.Add(this.guna2Button1);
             this.guna2Panel1.Controls.Add(this.btnLogOut);
             this.guna2Panel1.Controls.Add(this.btnRemove);
@@ -66,6 +68,29 @@
             this.guna2Panel1.Size = new System.Drawing.Size(195, 561);
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            // 
+            // btnSalesReport
+            // 
+            this.btnSalesReport.Animated = true;
+            this.btnSalesReport.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnSalesReport.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.btnSalesReport.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.btnSalesReport.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.btnSalesReport.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.guna2Transition1.SetDecoration(this.btnSalesReport, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnSalesReport.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSalesReport.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSalesReport.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSalesReport.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSalesReport.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnSalesReport.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSalesReport.ForeColor = System.Drawing.Color.White;
+            this.btnSalesReport.Location = new System.Drawing.Point(12, 149);
+            this.btnSalesReport.Name = "btnSalesReport";
+            this.btnSalesReport.Size = new System.Drawing.Size(201, 61);
+            this.btnSalesReport.TabIndex = 21;
+            this.btnSalesReport.Text = "Sales Report";
+            this.btnSalesReport.Click += new System.EventHandler(this.btnSalesReport_Click);
             // 
             // guna2Button1
             // 
@@ -83,33 +108,12 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(12, 373);
+            this.guna2Button1.Location = new System.Drawing.Point(12, 383);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(201, 61);
             this.guna2Button1.TabIndex = 20;
             this.guna2Button1.Text = "Users Control";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
-            this.btnLogOut.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.btnLogOut.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Transition1.SetDecoration(this.btnLogOut, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.btnLogOut.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            this.btnLogOut.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogOut.Image = global::HazleWood_Hideaway.Properties.Resources.logout;
-            this.btnLogOut.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnLogOut.ImageRotate = 0F;
-            this.btnLogOut.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogOut.Location = new System.Drawing.Point(64, 477);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            this.btnLogOut.PressedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogOut.Size = new System.Drawing.Size(64, 54);
-            this.btnLogOut.TabIndex = 19;
-            this.btnLogOut.UseTransparentBackground = true;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // btnRemove
             // 
@@ -127,7 +131,7 @@
             this.btnRemove.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.btnRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnRemove.ForeColor = System.Drawing.Color.White;
-            this.btnRemove.Location = new System.Drawing.Point(12, 315);
+            this.btnRemove.Location = new System.Drawing.Point(12, 325);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(201, 61);
             this.btnRemove.TabIndex = 18;
@@ -150,7 +154,7 @@
             this.btnUpdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(12, 257);
+            this.btnUpdate.Location = new System.Drawing.Point(12, 267);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(201, 61);
             this.btnUpdate.TabIndex = 18;
@@ -173,7 +177,7 @@
             this.btnAddItems.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.btnAddItems.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnAddItems.ForeColor = System.Drawing.Color.White;
-            this.btnAddItems.Location = new System.Drawing.Point(12, 199);
+            this.btnAddItems.Location = new System.Drawing.Point(12, 209);
             this.btnAddItems.Name = "btnAddItems";
             this.btnAddItems.Size = new System.Drawing.Size(201, 61);
             this.btnAddItems.TabIndex = 18;
@@ -196,7 +200,7 @@
             this.btnPlaceOrder.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.btnPlaceOrder.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnPlaceOrder.ForeColor = System.Drawing.Color.White;
-            this.btnPlaceOrder.Location = new System.Drawing.Point(12, 141);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(12, 149);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
             this.btnPlaceOrder.Size = new System.Drawing.Size(201, 61);
             this.btnPlaceOrder.TabIndex = 18;
@@ -237,6 +241,57 @@
             this.guna2Panel2.Size = new System.Drawing.Size(788, 561);
             this.guna2Panel2.TabIndex = 1;
             this.guna2Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel2_Paint);
+            // 
+            // guna2Transition1
+            // 
+            this.guna2Transition1.AnimationType = Guna.UI2.AnimatorNS.AnimationType.Transparent;
+            this.guna2Transition1.Cursor = null;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 1F;
+            this.guna2Transition1.DefaultAnimation = animation1;
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogOut.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.btnLogOut.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Transition1.SetDecoration(this.btnLogOut, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnLogOut.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.btnLogOut.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLogOut.Image = global::HazleWood_Hideaway.Properties.Resources.logout;
+            this.btnLogOut.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnLogOut.ImageRotate = 0F;
+            this.btnLogOut.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLogOut.Location = new System.Drawing.Point(64, 477);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.btnLogOut.PressedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLogOut.Size = new System.Drawing.Size(64, 54);
+            this.btnLogOut.TabIndex = 19;
+            this.btnLogOut.UseTransparentBackground = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
+            // uC_UserControl1
+            // 
+            this.uC_UserControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
+            this.guna2Transition1.SetDecoration(this.uC_UserControl1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.uC_UserControl1.Location = new System.Drawing.Point(3, 0);
+            this.uC_UserControl1.Name = "uC_UserControl1";
+            this.uC_UserControl1.Size = new System.Drawing.Size(788, 561);
+            this.uC_UserControl1.TabIndex = 5;
             // 
             // uC_RemoveItems1
             // 
@@ -288,35 +343,6 @@
             this.uC_Welcome1.TabIndex = 0;
             this.uC_Welcome1.Load += new System.EventHandler(this.uC_Welcome1_Load);
             // 
-            // guna2Transition1
-            // 
-            this.guna2Transition1.AnimationType = Guna.UI2.AnimatorNS.AnimationType.Transparent;
-            this.guna2Transition1.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 1F;
-            this.guna2Transition1.DefaultAnimation = animation1;
-            // 
-            // uC_UserControl1
-            // 
-            this.guna2Transition1.SetDecoration(this.uC_UserControl1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.uC_UserControl1.Location = new System.Drawing.Point(3, 0);
-            this.uC_UserControl1.Name = "uC_UserControl1";
-            this.uC_UserControl1.Size = new System.Drawing.Size(788, 561);
-            this.uC_UserControl1.TabIndex = 5;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,6 +382,7 @@
         private AllUserControls.UC_RemoveItems uC_RemoveItems1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private AllUserControls.UC_UserControl uC_UserControl1;
+        private Guna.UI2.WinForms.Guna2Button btnSalesReport;
     }
 }
 
