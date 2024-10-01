@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace HazleWood_Hideaway
 {
@@ -35,6 +36,20 @@ namespace HazleWood_Hideaway
 
         private void btnSingup_Click(object sender, EventArgs e)
         {
+            DateTime defaultDOB = new DateTime(24, 9, 25);
+            if (dtpDOB.Value == defaultDOB)
+            {
+                MessageBox.Show("Pick the date of birth .", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+           else if (string.IsNullOrEmpty(cmbRole.Text) || string.IsNullOrEmpty(txtFirstname.Text)
+             || string.IsNullOrEmpty(txtLastname.Text) || string.IsNullOrEmpty(txtPassword.Text)
+             || string.IsNullOrEmpty(txtConfirmPassword.Text))
+            {
+                MessageBox.Show("Please fill the textbox .", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else {
             string firstName = txtFirstname.Text;
             string lastName = txtLastname.Text;
             string email = txtEmail.Text + cmbRole.SelectedItem.ToString();  // Concatenate email with role
@@ -57,6 +72,7 @@ namespace HazleWood_Hideaway
             // Call the setDta method from the function class to execute the query
             Database_2 dataAccess = new Database_2();
             dataAccess.setDta(query);
+        }
         }
 
         private void txtFirstname_TextChanged(object sender, EventArgs e)

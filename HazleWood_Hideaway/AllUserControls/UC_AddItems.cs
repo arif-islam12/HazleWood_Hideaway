@@ -25,6 +25,13 @@ namespace HazleWood_Hideaway.AllUserControls
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtItemName.Text) || string.IsNullOrEmpty(txtCatagory.Text)
+               || string.IsNullOrEmpty(txtPrice.Text))
+            {
+                MessageBox.Show("Please fill the textbox .", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else { 
             // Parameterized query to insert a new item
             query = "INSERT INTO items (name, catagory, price) VALUES (@name, @catagory, @price)";
             SqlParameter[] parameters = {
@@ -36,6 +43,7 @@ namespace HazleWood_Hideaway.AllUserControls
             db.setDta(query, parameters); // Using setDta method from Database_2
 
             clearAll(); // Clear input fields after adding the item
+             }
         }
 
         private void UC_AddItems_Leave(object sender, EventArgs e)

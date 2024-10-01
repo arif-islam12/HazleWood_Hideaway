@@ -41,13 +41,22 @@ namespace HazleWood_Hideaway.AllUserControls
         {
             if (e.RowIndex >= 0)
             {
-                if (MessageBox.Show("Delete Item?", "Important Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                // Ensure the value is not null or empty, and try to parse it safely
+                string cellValue = guna2DataGridView1.Rows[e.RowIndex].Cells[0].Value?.ToString();
+
+                if (int.TryParse(cellValue, out int id))
                 {
-                    int id = int.Parse(guna2DataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    query = "DELETE FROM items WHERE iid = @iid";
-                    SqlParameter[] parameters = { new SqlParameter("@iid", id) };
-                    db.setDta(query, parameters); // Now works with the updated method
-                    loadData();
+                    if (MessageBox.Show("Delete Item?", "Important Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        query = "DELETE FROM items WHERE iid = @iid";
+                        SqlParameter[] parameters = { new SqlParameter("@iid", id) };
+                        db.setDta(query, parameters); // Now works with the updated method
+                        loadData();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid item ID. Please ensure the selected row contains a valid ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

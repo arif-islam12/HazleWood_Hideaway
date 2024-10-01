@@ -54,7 +54,6 @@
   <ItemGroup>
     <Compile Include="Database 2.cs" />
     <Compile Include="DGVPrinter.cs" />
-    <Compile Include="function.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

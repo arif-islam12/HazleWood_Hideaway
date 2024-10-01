@@ -91,13 +91,26 @@ namespace HazleWood_Hideaway.AllUserControls
             LoadUsers(); // Refresh the user list after adding a new user
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+      
+
+    private void btnRemove_Click(object sender, EventArgs e)
         {
             if (selectedUserId == -1)
             {
                 MessageBox.Show("Please select a user to remove.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+             string queryCheckAdmin = "SELECT COUNT(*) FROM Users WHERE Role = '@admin.com'";
+    int adminCount = (int)dataAccess.getData(queryCheckAdmin).Rows[0][0];
+
+    // If the selected user is an admin and there is only one admin in the database
+    if (adminCount == 1 && role == "@admin.com")
+    {
+        MessageBox.Show("You cannot remove the last admin. Please add another admin before removing this one.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+    }
+
+
 
             // Confirm the action
             var confirmResult = MessageBox.Show("Are you sure you want to remove this user?", "Confirm Remove", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

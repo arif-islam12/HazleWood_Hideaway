@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignupForm));
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnSingup = new Guna.UI2.WinForms.Guna2Button();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
@@ -38,23 +37,10 @@
             this.txtConfirmPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.dtpDOB = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.btnExit = new Guna.UI2.WinForms.Guna2TileButton();
-            this.btnLogin = new System.Windows.Forms.LinkLabel();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.cmbRole = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // guna2HtmlLabel3
-            // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(81, 501);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(138, 18);
-            this.guna2HtmlLabel3.TabIndex = 10;
-            this.guna2HtmlLabel3.Text = "Already have an account?";
-            this.guna2HtmlLabel3.Click += new System.EventHandler(this.guna2HtmlLabel3_Click);
             // 
             // btnSingup
             // 
@@ -66,9 +52,10 @@
             this.btnSingup.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
             this.btnSingup.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnSingup.ForeColor = System.Drawing.Color.White;
-            this.btnSingup.Location = new System.Drawing.Point(45, 443);
+            this.btnSingup.Location = new System.Drawing.Point(60, 545);
+            this.btnSingup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSingup.Name = "btnSingup";
-            this.btnSingup.Size = new System.Drawing.Size(245, 36);
+            this.btnSingup.Size = new System.Drawing.Size(327, 44);
             this.btnSingup.TabIndex = 9;
             this.btnSingup.Text = "Sign up";
             this.btnSingup.Click += new System.EventHandler(this.btnSingup_Click);
@@ -88,13 +75,13 @@
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.Location = new System.Drawing.Point(23, 256);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPassword.Location = new System.Drawing.Point(31, 315);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '\0';
             this.txtPassword.PlaceholderText = "Password";
             this.txtPassword.SelectedText = "";
-            this.txtPassword.Size = new System.Drawing.Size(295, 36);
+            this.txtPassword.Size = new System.Drawing.Size(393, 44);
             this.txtPassword.TabIndex = 8;
             // 
             // txtEmail
@@ -112,13 +99,13 @@
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
             this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(23, 204);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtEmail.Location = new System.Drawing.Point(31, 251);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
             this.txtEmail.PlaceholderText = "Email";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(130, 36);
+            this.txtEmail.Size = new System.Drawing.Size(173, 44);
             this.txtEmail.TabIndex = 7;
             // 
             // txtFirstname
@@ -136,13 +123,13 @@
             this.txtFirstname.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFirstname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
             this.txtFirstname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFirstname.Location = new System.Drawing.Point(23, 150);
-            this.txtFirstname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtFirstname.Location = new System.Drawing.Point(31, 185);
+            this.txtFirstname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.PasswordChar = '\0';
             this.txtFirstname.PlaceholderText = "First Name";
             this.txtFirstname.SelectedText = "";
-            this.txtFirstname.Size = new System.Drawing.Size(130, 36);
+            this.txtFirstname.Size = new System.Drawing.Size(173, 44);
             this.txtFirstname.TabIndex = 12;
             this.txtFirstname.TextChanged += new System.EventHandler(this.txtFirstname_TextChanged);
             // 
@@ -161,13 +148,13 @@
             this.txtLastname.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtLastname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
             this.txtLastname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtLastname.Location = new System.Drawing.Point(189, 150);
-            this.txtLastname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtLastname.Location = new System.Drawing.Point(252, 185);
+            this.txtLastname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.PasswordChar = '\0';
             this.txtLastname.PlaceholderText = "Last Name";
             this.txtLastname.SelectedText = "";
-            this.txtLastname.Size = new System.Drawing.Size(129, 36);
+            this.txtLastname.Size = new System.Drawing.Size(172, 44);
             this.txtLastname.TabIndex = 13;
             // 
             // txtConfirmPassword
@@ -185,13 +172,13 @@
             this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtConfirmPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
             this.txtConfirmPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtConfirmPassword.Location = new System.Drawing.Point(23, 312);
-            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(31, 384);
+            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '\0';
             this.txtConfirmPassword.PlaceholderText = "Confirm Password";
             this.txtConfirmPassword.SelectedText = "";
-            this.txtConfirmPassword.Size = new System.Drawing.Size(295, 36);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(393, 44);
             this.txtConfirmPassword.TabIndex = 14;
             // 
             // dtpDOB
@@ -203,11 +190,12 @@
             this.dtpDOB.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpDOB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpDOB.Location = new System.Drawing.Point(23, 368);
+            this.dtpDOB.Location = new System.Drawing.Point(31, 453);
+            this.dtpDOB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpDOB.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDOB.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDOB.Name = "dtpDOB";
-            this.dtpDOB.Size = new System.Drawing.Size(295, 36);
+            this.dtpDOB.Size = new System.Drawing.Size(393, 44);
             this.dtpDOB.TabIndex = 15;
             this.dtpDOB.Value = new System.DateTime(2024, 9, 25, 19, 19, 0, 310);
             // 
@@ -223,34 +211,21 @@
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
             this.btnExit.Location = new System.Drawing.Point(0, 0);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(30, 25);
+            this.btnExit.Size = new System.Drawing.Size(40, 31);
             this.btnExit.TabIndex = 16;
             this.btnExit.Text = "x";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(121)))), ((int)(((byte)(121)))));
-            this.btnLogin.AutoSize = true;
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.btnLogin.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(121)))), ((int)(((byte)(121)))));
-            this.btnLogin.Location = new System.Drawing.Point(226, 501);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(47, 16);
-            this.btnLogin.TabIndex = 17;
-            this.btnLogin.TabStop = true;
-            this.btnLogin.Text = "Sign up";
-            this.btnLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnLogin_LinkClicked);
             // 
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.Image = global::HazleWood_Hideaway.Properties.Resources.logo1;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(76, 43);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(101, 53);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(173, 89);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(231, 110);
             this.guna2PictureBox1.TabIndex = 18;
             this.guna2PictureBox1.TabStop = false;
             // 
@@ -269,45 +244,41 @@
             this.cmbRole.Items.AddRange(new object[] {
             "@admin.com",
             "@cashier.com",
-            "@chef.com",
-            "@waiter.com"});
-            this.cmbRole.Location = new System.Drawing.Point(189, 204);
-            this.cmbRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            "@chef.com"});
+            this.cmbRole.Location = new System.Drawing.Point(252, 251);
+            this.cmbRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(130, 36);
+            this.cmbRole.Size = new System.Drawing.Size(172, 36);
             this.cmbRole.TabIndex = 19;
             // 
             // SignupForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(343, 561);
+            this.ClientSize = new System.Drawing.Size(457, 690);
             this.Controls.Add(this.cmbRole);
             this.Controls.Add(this.guna2PictureBox1);
-            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.dtpDOB);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.txtLastname);
             this.Controls.Add(this.txtFirstname);
-            this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.btnSingup);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SignupForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hazlewood Hideaway";
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2Button btnSingup;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
@@ -316,7 +287,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtConfirmPassword;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpDOB;
         private Guna.UI2.WinForms.Guna2TileButton btnExit;
-        private System.Windows.Forms.LinkLabel btnLogin;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2ComboBox cmbRole;
     }

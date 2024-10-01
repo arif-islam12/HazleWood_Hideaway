@@ -14,31 +14,41 @@ namespace HazleWood_Hideaway.AllUserControls
         public UC_UpdateItems()
         {
             InitializeComponent();
+            loadData();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            // Ensure that id is set correctly before executing the update query
-            if (int.TryParse(guna2DataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out int id))
+            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtCategory.Text)
+              || string.IsNullOrEmpty(txtPrice.Text))
             {
-                query = "UPDATE items SET name=@name, catagory=@catagory, price=@price WHERE iid=@id";
-                SqlParameter[] parameters = {
+                MessageBox.Show("Please fill the textbox .", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                // Ensure that id is set correctly before executing the update query
+                if (int.TryParse(guna2DataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out int id))
+                {
+                    query = "UPDATE items SET name=@name, catagory=@catagory, price=@price WHERE iid=@id";
+                    SqlParameter[] parameters = {
                     new SqlParameter("@name", txtName.Text),
                     new SqlParameter("@catagory", txtCategory.Text),
                     new SqlParameter("@price", decimal.Parse(txtPrice.Text)), // Ensure price is a decimal
                     new SqlParameter("@id", id)
                 };
 
-                db.setDta(query, parameters);
-                loadData();
+                    db.setDta(query, parameters);
+                    loadData();
 
-                txtName.Clear();
-                txtPrice.Clear();
-                txtCategory.Clear();
-            }
-            else
-            {
-                MessageBox.Show("Please select an item to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtName.Clear();
+                    txtPrice.Clear();
+                    txtCategory.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Please select an item to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -50,6 +60,7 @@ namespace HazleWood_Hideaway.AllUserControls
         public void loadData()
         {
             query = "SELECT * FROM items";
+
             DataTable dt = db.getData(query); // Use DataTable instead of DataSet
             guna2DataGridView1.DataSource = dt; // Set the DataSource to the DataTable
         }
