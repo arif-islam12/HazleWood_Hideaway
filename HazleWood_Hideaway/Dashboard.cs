@@ -14,10 +14,12 @@ namespace HazleWood_Hideaway
 {
     public partial class Dashboard : Form
     {
-        public Dashboard(String user)
+        public Dashboard(string userType, string fullName)
         {
             InitializeComponent();
-            if (user == "Guest")
+
+            // Show or hide buttons based on the user type
+            if (userType == "Guest")
             {
                 btnAddItems.Hide();
                 btnRemove.Hide();
@@ -25,7 +27,7 @@ namespace HazleWood_Hideaway
                 guna2Button1.Hide();
                 btnSalesReport.Hide();
             }
-            else if (user == "Admin")
+            else if (userType == "Admin")
             {
                 btnAddItems.Show();
                 btnRemove.Show();
@@ -34,8 +36,11 @@ namespace HazleWood_Hideaway
                 btnSalesReport.Show();
                 btnPlaceOrder.Hide();
             }
+
+            // Display the user's full name on the dashboard
+            lblWelcome.Text = $"Welcome, {fullName}";
         }
-        
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {

@@ -33,6 +33,7 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnSalesReport = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLogOut = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnRemove = new Guna.UI2.WinForms.Guna2Button();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
             this.btnAddItems = new Guna.UI2.WinForms.Guna2Button();
@@ -40,13 +41,13 @@
             this.btnExit = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
-            this.btnLogOut = new Guna.UI2.WinForms.Guna2ImageButton();
             this.uC_UserControl1 = new HazleWood_Hideaway.AllUserControls.UC_UserControl();
             this.uC_RemoveItems1 = new HazleWood_Hideaway.AllUserControls.UC_RemoveItems();
             this.uC_UpdateItems1 = new HazleWood_Hideaway.AllUserControls.UC_UpdateItems();
             this.uC_AddItems1 = new HazleWood_Hideaway.AllUserControls.UC_AddItems();
             this.uC_PlaceOrder1 = new HazleWood_Hideaway.AllUserControls.UC_PlaceOrder();
             this.uC_Welcome1 = new HazleWood_Hideaway.AllUserControls.UC_Welcome();
+            this.lblWelcome = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +55,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.guna2Panel1.Controls.Add(this.lblWelcome);
             this.guna2Panel1.Controls.Add(this.btnSalesReport);
             this.guna2Panel1.Controls.Add(this.guna2Button1);
             this.guna2Panel1.Controls.Add(this.btnLogOut);
@@ -72,7 +74,6 @@
             // btnSalesReport
             // 
             this.btnSalesReport.Animated = true;
-            this.btnSalesReport.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btnSalesReport.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
             this.btnSalesReport.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
             this.btnSalesReport.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
@@ -114,6 +115,27 @@
             this.guna2Button1.TabIndex = 20;
             this.guna2Button1.Text = "Users Control";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogOut.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.btnLogOut.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Transition1.SetDecoration(this.btnLogOut, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnLogOut.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.btnLogOut.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLogOut.Image = global::HazleWood_Hideaway.Properties.Resources.logout;
+            this.btnLogOut.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnLogOut.ImageRotate = 0F;
+            this.btnLogOut.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLogOut.Location = new System.Drawing.Point(64, 477);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.btnLogOut.PressedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLogOut.Size = new System.Drawing.Size(64, 54);
+            this.btnLogOut.TabIndex = 19;
+            this.btnLogOut.UseTransparentBackground = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // btnRemove
             // 
@@ -263,27 +285,6 @@
             animation1.TransparencyCoeff = 1F;
             this.guna2Transition1.DefaultAnimation = animation1;
             // 
-            // btnLogOut
-            // 
-            this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
-            this.btnLogOut.CheckedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.btnLogOut.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Transition1.SetDecoration(this.btnLogOut, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.btnLogOut.HoverState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            this.btnLogOut.HoverState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogOut.Image = global::HazleWood_Hideaway.Properties.Resources.logout;
-            this.btnLogOut.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnLogOut.ImageRotate = 0F;
-            this.btnLogOut.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogOut.Location = new System.Drawing.Point(64, 477);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.PressedState.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            this.btnLogOut.PressedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogOut.Size = new System.Drawing.Size(64, 54);
-            this.btnLogOut.TabIndex = 19;
-            this.btnLogOut.UseTransparentBackground = true;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
             // uC_UserControl1
             // 
             this.uC_UserControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
@@ -343,6 +344,18 @@
             this.uC_Welcome1.TabIndex = 0;
             this.uC_Welcome1.Load += new System.EventHandler(this.uC_Welcome1_Load);
             // 
+            // lblWelcome
+            // 
+            this.lblWelcome.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.lblWelcome, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.lblWelcome.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.ForeColor = System.Drawing.Color.White;
+            this.lblWelcome.Location = new System.Drawing.Point(30, 44);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(63, 21);
+            this.lblWelcome.TabIndex = 22;
+            this.lblWelcome.Text = "Welcome,";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +372,7 @@
             this.Text = "Hazlewood Hideaway";
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -383,6 +397,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private AllUserControls.UC_UserControl uC_UserControl1;
         private Guna.UI2.WinForms.Guna2Button btnSalesReport;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblWelcome;
     }
 }
 

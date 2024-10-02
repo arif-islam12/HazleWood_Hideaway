@@ -72,7 +72,8 @@ namespace HazleWood_Hideaway
             // Call the setDta method from the function class to execute the query
             Database_2 dataAccess = new Database_2();
             dataAccess.setDta(query);
-        }
+            MessageBox.Show("User added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void txtFirstname_TextChanged(object sender, EventArgs e)

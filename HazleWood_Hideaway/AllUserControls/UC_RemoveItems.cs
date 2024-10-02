@@ -52,6 +52,7 @@ namespace HazleWood_Hideaway.AllUserControls
                         SqlParameter[] parameters = { new SqlParameter("@iid", id) };
                         db.setDta(query, parameters); // Now works with the updated method
                         loadData();
+                        MessageBox.Show("Item Deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else

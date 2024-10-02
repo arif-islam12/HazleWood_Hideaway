@@ -43,7 +43,8 @@ namespace HazleWood_Hideaway.AllUserControls
             db.setDta(query, parameters); // Using setDta method from Database_2
 
             clearAll(); // Clear input fields after adding the item
-             }
+               MessageBox.Show("Item added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void UC_AddItems_Leave(object sender, EventArgs e)

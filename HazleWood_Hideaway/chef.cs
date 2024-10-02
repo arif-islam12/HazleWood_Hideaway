@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess;
 
@@ -20,9 +13,8 @@ namespace HazleWood_Hideaway
         {
             InitializeComponent();
             LoadData();
-
+           
         }
-        
 
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -30,7 +22,7 @@ namespace HazleWood_Hideaway
             {
                 if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                 {
-                    // Get the selected order's ID from the DataGridView (column index 0 is assumed for the ID)
+                    // Get the selected order's ID from the hidden column (column index 0 is assumed for the ID)
                     int orderId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells[0].Value);
 
                     // Show a confirmation dialog asking if the order is done
@@ -38,7 +30,7 @@ namespace HazleWood_Hideaway
 
                     if (result == DialogResult.Yes)
                     {
-                        // Remove the selected row from the chef_order table and DataGridView
+                        // Delete the selected row from the chef_order table using the ID
                         string deleteQuery = "DELETE FROM chef_order WHERE id = @id";
                         SqlParameter[] parameters = { new SqlParameter("@id", orderId) };
                         db.setDta(deleteQuery, parameters); // Delete the order from the database
@@ -53,9 +45,9 @@ namespace HazleWood_Hideaway
             {
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        
-
         }
+
+
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
@@ -64,7 +56,7 @@ namespace HazleWood_Hideaway
 
         public void LoadData()
         {
-            string query = "SELECT item_name, quantity, table_number, order_date FROM chef_order";
+            string query = "SELECT id, item_name, quantity, table_number, order_date FROM chef_order";
             DataTable dt = db.getData(query);
 
             // Clear existing rows in DataGridView before loading new data
@@ -74,13 +66,14 @@ namespace HazleWood_Hideaway
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 int rowIndex = guna2DataGridView1.Rows.Add(); // Add new row
-                guna2DataGridView1.Rows[rowIndex].Cells[0].Value = (i + 1).ToString(); // Serial number
+                guna2DataGridView1.Rows[rowIndex].Cells[0].Value = dt.Rows[i]["id"].ToString(); // Hidden column for ID
                 guna2DataGridView1.Rows[rowIndex].Cells[1].Value = dt.Rows[i]["item_name"].ToString(); // Item Name
                 guna2DataGridView1.Rows[rowIndex].Cells[2].Value = dt.Rows[i]["quantity"].ToString(); // Quantity
                 guna2DataGridView1.Rows[rowIndex].Cells[3].Value = dt.Rows[i]["table_number"].ToString(); // Table Number
                 guna2DataGridView1.Rows[rowIndex].Cells[4].Value = Convert.ToDateTime(dt.Rows[i]["order_date"]).ToString("yyyy-MM-dd HH:mm:ss"); // Order Time
             }
         }
+
 
         private void btnLogout_Click(object sender, EventArgs e)
         {

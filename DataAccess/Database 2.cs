@@ -11,7 +11,8 @@ namespace DataAccess
         protected SqlConnection GetConnection()
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "data source=LAPTOP-8LBDOARG\\SQLEXPRESS;database=user;Trusted_Connection=True"; // Adjust your connection string as needed
+            //conn.ConnectionString = "data source=LAPTOP-8LBDOARG\\SQLEXPRESS;database=user;Trusted_Connection=True"; // Adjust your connection string as needed
+            conn.ConnectionString = "data source=DESKTOP-0EICFO7;database=Hwood;Trusted_Connection=True";
             return conn;
         }
 
@@ -58,7 +59,7 @@ namespace DataAccess
                     conn.Close();
                 }
 
-                MessageBox.Show("Data processed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Data processed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -79,7 +80,7 @@ namespace DataAccess
                     conn.Close();
                 }
 
-                MessageBox.Show("Data processed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Data processed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

@@ -44,6 +44,7 @@ namespace HazleWood_Hideaway.AllUserControls
                     txtName.Clear();
                     txtPrice.Clear();
                     txtCategory.Clear();
+                    MessageBox.Show("Item updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {

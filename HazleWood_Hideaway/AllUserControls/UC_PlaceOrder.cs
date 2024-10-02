@@ -112,6 +112,7 @@ namespace HazleWood_Hideaway.AllUserControls
 
                 // Store the invoice and order details in the database
                 StoreInvoiceAndOrder();
+                send_chef();
 
                 total = 0;
                 guna2DataGridView1.Rows.Clear();
@@ -186,6 +187,40 @@ namespace HazleWood_Hideaway.AllUserControls
                         guna2DataGridView1.Rows.RemoveAt(e.RowIndex);
                     }
                 }
+            }
+        }
+        private void send_chef()
+        {
+            // Check if the DataGridView has any rows
+
+
+            // Check if txtTableNumber is initialized
+
+
+            string query = "INSERT INTO chef_order (item_name, quantity, table_number) VALUES (@item_name, @quantity, @table_number)";
+
+            try
+            {
+                for (int i = 0; i < guna2DataGridView1.Rows.Count; i++)
+                {
+                    // Ensure the row is not the new row placeholder
+                    if (guna2DataGridView1.Rows[i].IsNewRow) continue;
+
+                    SqlParameter[] parameters = {
+                        new SqlParameter("@item_name", guna2DataGridView1.Rows[i].Cells[0].Value?.ToString() ?? string.Empty),
+                        new SqlParameter("@quantity", guna2DataGridView1.Rows[i].Cells[2].Value?.ToString() ?? string.Empty),
+                        new SqlParameter("@table_number", txtTableNumber.Text) // Ensure this is your table number textbox
+                    };
+
+                    // Call to the Database_2 method
+                    db.setDta(query, parameters);
+                }
+
+                MessageBox.Show("Order sent to the chef successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while sending the order: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
