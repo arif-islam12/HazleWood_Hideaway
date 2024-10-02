@@ -9,11 +9,11 @@ namespace HazleWood_Hideaway
     public partial class chef : Form
     {
         Database_2 db = new Database_2();
-        public chef()
+        public chef(string fullName)
         {
             InitializeComponent();
             LoadData();
-           
+            lblWelcome.Text = $"Welcome, {fullName}";
         }
 
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
